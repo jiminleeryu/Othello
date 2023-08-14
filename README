@@ -1,0 +1,40 @@
+Overview: There are 13 classes within the othello program: App, Board, CompPlayer,
+Constants, Controls, HumanPlayer, Move, PaneOrganizer, Piece, Player interface, Referee,
+SetupGame, and Square. The App class contains a method that starts the program by
+setting up the scene and the stage. I also instantiated the top level graphical class
+PaneOrganizer as an instance within the App.
+
+The Pane Organizer class is the top level graphical class, holds the board pane
+and controls pane, and creates a new instance of setupGame.
+
+The controls class deals with the user input, and includes the computer and human
+player modes, apply settings, reset, and quit buttons.
+
+The setUpGame class is the top level logical class and deals with creating the players,
+setting the referees, and starting the players based on the parameters given by the
+controls class.
+
+Design choices: In this program I used an interface for the player, as it includes very
+similar methods that are to be used by the computer an human player. This includes the
+turn method which involves with making moves, setting the referee, and getting the
+player color. Computer player and human player utilizes these methods from the player class
+as the referee deals with setting moves for the active player. The referee has to know about
+both players along with the board to determine move validity, creating turns, and knowing when
+the game ends. In order for the ref to know about the players, there is a two way association
+set up between the referee and the player.
+
+To utilize the minimax algorithm, there is a copy constructor created in board which the
+algorithm can use to test which future moves will be the best for the AI. The double array of square
+values in the constants class can then be used by the minimax algorithm to find squares that
+yield the best moves.
+
+
+KNOWN BUGS: Graphical bug where sometimes when placing pieces a square that
+has a piece already on it will by highlighted grey, however the player will
+not be able to place any pieces on top of the one that is already placed.
+Computer 2 and 3 do not work due to null pointer exception.
+
+When a computer plays against another computer, for some reason there
+is a condition where the game finishes but the computer places a piece
+inside of the border. This may be due to a problem with the order of
+method calling.
